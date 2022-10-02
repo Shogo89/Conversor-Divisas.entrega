@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="./img/divisa.png" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>WillyWonkaRemesas</title>
+  </head>
+  <body>
+    <h3>Conversor de divisas a pesos</h3>
+    <form class="informacion">
+      <p>seleccione que moneda quiere convertir a pesos</p>
+      <input type="radio" name="cambio" id="one" />Dolar
+      <input type="radio" name="cambio" id="two" />Euros
+      <p>ingrese el monto a convertir</p>
+      <input type="number" id="valor" min="1" max="10000000000000" />
+      <input
+        type="button"
+        id="conversor"
+        value="convertir"
+        onclick="remesas();"
+      />
+    </form>
+
+    <script src="./custom.js"></script>
+  </body>
+</html>
