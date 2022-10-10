@@ -20,3 +20,130 @@ h3 {
 .informacion {
   text-align: center;
 }
+
+.menubar {
+  background-color: black;
+  text-align: center;
+}
+.menubar li {
+  display: inline-block;
+  text-align: center;
+}
+.menubar li a {
+  text-decoration: none;
+  color: black;
+  padding: 20px;
+  display: block;
+}
+.menubar li a:hover {
+  background: yellow;
+}
+
+.contactito {
+  max-width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.5em;
+}
+.contactito h2 {
+  text-align: center;
+  font-size: 3em;
+}
+.contactito .contact-wrapper {
+  box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.3);
+}
+.contactito .contact-wrapper .contact-form {
+  background: #222222;
+  color: black;
+}
+.contactito .contact-wrapper .contact-form form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.contactito .contact-wrapper .contact-form form label {
+  display: block;
+}
+.contactito .contact-wrapper .contact-form form p {
+  margin: 0;
+  padding: 1em;
+}
+.contactito .contact-wrapper .contact-form form .block {
+  grid-column: 1 / 3;
+}
+.contactito .contact-wrapper .contact-form form button {
+  width: 100%;
+  padding: 0.7em;
+  border: none;
+  background: none;
+  outline: 0;
+  color: black;
+  border-bottom: 1px solid yellowgreen;
+  background: greenyellow;
+  border: 0;
+  text-transform: uppercase;
+  padding: 1em;
+}
+.contactito .contact-wrapper .contact-form form button:hover,
+.contactito .contact-wrapper .contact-form form button:focus {
+  background: yellow;
+  color: black;
+  transition: background-color 1s ease-out;
+  outline: 0;
+}
+.contactito .contact-wrapper .contact-form form input {
+  width: 100%;
+  padding: 0.7em;
+  border: none;
+  background: none;
+  outline: 0;
+  color: black;
+  border-bottom: 1px solid #d63031;
+}
+.contactito .contact-wrapper .contact-form form textarea {
+  width: 100%;
+  padding: 0.7em;
+  border: none;
+  background: none;
+  outline: 0;
+  color: black;
+  border-bottom: 1px solid #d63031;
+}
+.contactito .contact-wrapper .contact-info {
+  background: #706f6f;
+  color: black;
+}
+.contactito .contact-wrapper .contact-info h4 {
+  margin: auto;
+  text-align: center;
+}
+.contactito .contact-wrapper .contact-info ul {
+  text-align: center;
+  margin: 0 0 1rem 0;
+  padding: 1em;
+}
+.contactito .contact-wrapper .contact-info ul li {
+  padding: 0.3em;
+}
+.contactito .contact-wrapper .contact-info p {
+  text-align: center;
+  margin: 0 0 1rem 0;
+  padding: 0.2em;
+}
+
+@media (min-width: 700px) {
+  body {
+    padding: 0 4em;
+  }
+  .contact-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
+  .contact-wrapper > * {
+    padding: 2em;
+  }
+  .contact-info h4,
+  .contact-info ul,
+  .contact-info p {
+    text-align: left;
+  }
+}
