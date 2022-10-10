@@ -19,14 +19,18 @@ function remesas() {
   let total = 0;
   let dolar = 300;
   let euro = 301;
-  if (document.getElementById("one").checked) {
-    total = cantidad * dolar;
-    alert("el total de pesos por tus dolares es : $" + total);
-  }
-  if (document.getElementById("two").checked) {
-    total = cantidad * euro;
-    alert("el total de pesos por tus euros es : €" + total);
-  } else {
-    alert("por favor coloca la cantidad y selecciona tu moneda");
-  }
+  do {
+    alert(nombre_y_apellido);
+    agregar = prompt("desea realizar otra conversion?");
+    if (document.getElementById("one").checked) {
+      total = cantidad * dolar;
+      alert("el total de pesos por tus dolares es : $" + total);
+    }
+    if (document.getElementById("two").checked) {
+      total = cantidad * euro;
+      alert("el total de pesos por tus euros es : €" + total);
+    } else {
+      alert("por favor coloca la cantidad y selecciona tu moneda");
+    }
+  } while ((agregar = !"no"));
 }
