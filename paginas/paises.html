@@ -17,6 +17,25 @@
     <title>WillyWonkaRemesas</title>
   </head>
   <body>
+    <header>
+      <div class="header-section container">
+        <div>
+          <img
+            onmouseover="showCart(this)"
+            class="cart"
+            src="../img/cart.png"
+            alt=""
+          />
+          <p class="count-product">0</p>
+        </div>
+        <div class="cart-products" id="products-id">
+          <p class="close-btn" onclick="closeBtn()">X</p>
+          <h3>paises para remesas</h3>
+          <div class="card-items"></div>
+          <h2>envios: <strong class="price-total">0</strong> $</h2>
+        </div>
+      </div>
+    </header>
     <!--Menu-->
     <div>
       <nav id="menu" class="nav-main">
@@ -28,6 +47,41 @@
         </ul>
       </nav>
     </div>
+    <!-- Paises-->
+    <section class="container">
+      <div class="products">
+        <div class="carts">
+          <div>
+            <img src="../img/bandera-de-brasil.png" alt="Brasil" />
+          </div>
+          <p class="title">Brasil</p>
+          <a href="" data-id="1" class="btn-add-cart">Enviar</a>
+        </div>
+        <div class="carts">
+          <div>
+            <img src="../img/colombia.png" alt="Colombia" />
+          </div>
+          <p class="title">Colombia</p>
+          <a href="" class="btn-add-cart" data-id="2">Enviar</a>
+        </div>
+        <div class="carts">
+          <div>
+            <img src="../img/venezuela.png" alt="Venezuela" />
+          </div>
+          <p class="title">Venezuela</p>
+          <a href="" data-id="3" class="btn-add-cart">Enviar</a>
+        </div>
+        <div class="carts">
+          <div>
+            <img src="../img/chile.png" alt="Chile" />
+          </div>
+          <p class="title">Chile</p>
+          <a href="" data-id="4" class="btn-add-cart">Enviar</a>
+        </div>
+      </div>
+    </section>
+
+    <script src="../javascript/items.js"></script>
     <script src="../javascript/paises.js"></script>
   </body>
 </html>

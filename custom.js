@@ -34,3 +34,5 @@ function remesas() {
     }
   } while ((agregar = !"no"));
 }
+
+console.log(remesas);
