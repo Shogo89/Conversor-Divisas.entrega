@@ -1,111 +1,98 @@
-function seleccionaUnPais() {
-  let pais = new Item();
-  pais.id = prompt("desea enviar dolar o euro?");
-  pais.pais = prompt(" a que pais desea enviar el dinero?");
-  pais.ciudad = prompt("a que ciudad?");
-  pais.cantidad = prompt("cuanto dinero?");
+const carrito = document.querySelector("#carrito");
+const listPais = document.querySelector("#lista-cursos");
+const contenedorCarrito = document.querySelector("#lista-carrito tbody");
+const vaciarCarritoBtn = document.querySelector("#vaciar-carrito");
+let articulosCarrito = [];
 
-  return pais;
-}
+const cargarEventListeners = () => {
+  listPais.addEventListener("click", agregarPais);
 
-function seleccionaPais(carrito) {
-  let pais;
-  let seguir;
-  do {
-    pais = seleccionaUnPais();
-    carrito.push(pais);
-    seguir = prompt("desea  enviar mas remesas? si/no");
-  } while (seguir == "si");
-}
+  carrito.addEventListener("click", eliminarPais);
 
-/**function mostrarCarrito(carrito) { 
-  for (let pais of carrito) {
-    console.log(
-      "nombre: " +
-        pais.pais +
-        "\n" +
-        "ciudad: " +
-        pais.ciudad +
-        "\n" +
-        "cantidad: " +
-        pais.cantidad +
-        "\n" +
-        "fecha" +
-        pais.fecha +
-        "\n"
-    );
-  }
-}
-*/
-/*function buscarElemento(id) {
-  let elemento = carrito.find((pais) => {
-    return pais.id == id;
+  vaciarCarritoBtn.addEventListener("click", () => {
+    articulosCarrito = [];
+    limpiarHtml();
   });
-  return elemento;
-}
 
-const carrito = [];
-seleccionaPais(carrito);
-console.log(carrito);
-mostrarCarrito(carrito);
-let resultado = buscarElemento(carrito, 2); */
+  document.addEventListener("DOMContentLoaded", () => {
+    articulosCarrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    carritoHTML();
+  });
+};
 
-let allContainerCart = document.querySelector(".products");
-let RemesasPais = document.querySelector(".card-items");
-
-let buyThings = [];
-
-loadEventListeners();
-function loadEventListeners() {
-  allContainerCart.addEventListener("click", addProduct);
-  RemesasPais.addEventListener("click", deleteProduct);
-}
-
-function addProduct(e) {
-  e.preventDefault();
-  if (e.target.classList.contains("btn-add-cart")) {
-    const selectProduct = e.target.parentElement;
-    readTheContent(selectProduct);
+const agregarPais = (e) => {
+  if (e.target.classList.contains("agregar-carrito")) {
+    const cursoSeleccionado = e.target.parentElement.parentElement;
+    leerDatosPais(cursoSeleccionado);
   }
-}
-function deleteProduct(e) {
-  if (e.target.classList.contains("delete-product")) {
-    const deleteId = e.target.getAttribute("data id");
-    buyThings = buyThings.filter((product) => product.id !== deleteId);
-  }
-}
+};
 
-function readTheContent(product) {
-  const infoProduct = {
-    image: product.querySelector("div img").src,
-    title: product.querySelector(".title").textContent,
-    id: product.querySelector("a").getAttribute("data-id"),
-    amount: 1,
+const eliminarPais = (e) => {
+  if (e.target.classList.contains("borrar-curso")) {
+    const paisId = e.target.getAttribute("data-id");
+
+    articulosCarrito = articulosCarrito.filter((curso) => curso.id !== paisId);
+
+    carritoHTML();
+  }
+};
+
+const leerDatosPais = (curso) => {
+  const infoPais = {
+    imagen: curso.querySelector("img").src,
+    titulo: curso.querySelector("h4").textContent,
+    precio: curso.querySelector(".precio span").textContent,
+    id: curso.querySelector("a").getAttribute("data-id"),
+    cantidad: 1,
   };
 
-  buyThings = [...buyThings, infoProduct];
-  loadHtml();
-  console.log(infoProduct);
-}
+  const existe = articulosCarrito.some((curso) => curso.id === infoPais.id);
+  if (existe) {
+    const cursos = articulosCarrito.map((curso) => {
+      if (curso.id === infoPais.id) {
+        curso.cantidad++;
+        return curso;
+      } else {
+        return curso;
+      }
+    });
 
-function loadHtml() {
-  buyThings.forEach((product) => {
-    const { image, title, amount, id } = product;
-    const row = document.createElement("div");
-    row.classList.add("item");
+    articulosCarrito = [...cursos];
+  } else {
+    articulosCarrito = [...articulosCarrito, infoPais];
+  }
+
+  carritoHTML();
+};
+
+const carritoHTML = () => {
+  limpiarHtml();
+
+  articulosCarrito.forEach((curso) => {
+    const row = document.createElement("tr");
     row.innerHTML = `
-            <img src="${image}" alt="">
-            <div class="item-content">
-                <h5>${title}</h5>
-                <h6>Amount: ${amount}</h6>
-            </div>
-            <span class="delete-product" data-id="${id}">X</span>
+            <td><img src="${curso.imagen}" width=100></td>
+            <td>${curso.titulo}</td>
+            <td>${curso.precio}</td>
+            <td>${curso.cantidad}</td>
+            <td><a href="#" class="borrar-curso" data-id="${curso.id}">X</a></td>
+
         `;
 
-    RemesasPais.appendChild(row);
+    contenedorCarrito.appendChild(row);
   });
-}
 
-function clearHtml() {
-  RemesasPais.innerHTML = "";
-}
+  sincronizarStorage();
+};
+
+const sincronizarStorage = () => {
+  localStorage.setItem("carrito", JSON.stringify(articulosCarrito));
+};
+
+const limpiarHtml = () => {
+  while (contenedorCarrito.firstChild) {
+    contenedorCarrito.removeChild(contenedorCarrito.firstChild);
+  }
+};
+
+cargarEventListeners();

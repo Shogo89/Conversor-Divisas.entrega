@@ -2,40 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="../img/divisa.png" />
-    <link rel="stylesheet" href="../styles.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
-    />
-    <link
-      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-      rel="stylesheet"
-    />
-    <title>WillyWonkaRemesas</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>WillyWonka</title>
+    <link rel="stylesheet" href="../css/skeleton.css" />
+    <link rel="stylesheet" href="../css/normalizando.css" />
+    <link rel="stylesheet" href="../css/custom.css" />
   </head>
   <body>
-    <header>
-      <div class="header-section container">
-        <div>
-          <img
-            onmouseover="showCart(this)"
-            class="cart"
-            src="../img/cart.png"
-            alt=""
-          />
-          <p class="count-product">0</p>
-        </div>
-        <div class="cart-products" id="products-id">
-          <p class="close-btn" onclick="closeBtn()">X</p>
-          <h3>paises para remesas</h3>
-          <div class="card-items"></div>
-          <h2>envios: <strong class="price-total">0</strong> $</h2>
-        </div>
-      </div>
-    </header>
     <!--Menu-->
     <div>
       <nav id="menu" class="nav-main">
@@ -43,45 +18,236 @@
           <li><a href="../index.html">Inicio</a></li>
           <li><a href="#">Productos</a></li>
           <li><a href="#">Descuentos</a></li>
+          <li><a href="../paginas/paises.html">Países</a></li>
           <li><a href="../paginas/contactanos.html">Contactanos</a></li>
         </ul>
       </nav>
     </div>
-    <!-- Paises-->
-    <section class="container">
-      <div class="products">
-        <div class="carts">
-          <div>
-            <img src="../img/bandera-de-brasil.png" alt="Brasil" />
+    <header id="header" class="header">
+      <div class="container">
+        <div class="row">
+          <div class="two columns u-pull-right">
+            <ul>
+              <li class="submenu">
+                <img src="../img/cart.png" id="img-carrito" />
+                <div id="carrito">
+                  <table id="lista-carrito" class="u-full-width">
+                    <thead>
+                      <tr>
+                        <th>Imagen</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody></tbody>
+                  </table>
+
+                  <a href="#" id="vaciar-carrito" class="button u-full-width"
+                    >eliminar paises seleccionados</a
+                  >
+                </div>
+              </li>
+            </ul>
           </div>
-          <p class="title">Brasil</p>
-          <a href="" data-id="1" class="btn-add-cart">Enviar</a>
-        </div>
-        <div class="carts">
-          <div>
-            <img src="../img/colombia.png" alt="Colombia" />
-          </div>
-          <p class="title">Colombia</p>
-          <a href="" class="btn-add-cart" data-id="2">Enviar</a>
-        </div>
-        <div class="carts">
-          <div>
-            <img src="../img/venezuela.png" alt="Venezuela" />
-          </div>
-          <p class="title">Venezuela</p>
-          <a href="" data-id="3" class="btn-add-cart">Enviar</a>
-        </div>
-        <div class="carts">
-          <div>
-            <img src="../img/chile.png" alt="Chile" />
-          </div>
-          <p class="title">Chile</p>
-          <a href="" data-id="4" class="btn-add-cart">Enviar</a>
         </div>
       </div>
-    </section>
+    </header>
 
-    <script src="../javascript/items.js"></script>
+    <div id="hero">
+      <div class="container">
+        <div class="row">
+          <div class="six columns">
+            <div class="contenido-hero">
+              <h2>Envia dinero o cambia tus divisas</h2>
+              <p>El costo es 5 % del envio</p>
+              <form action="#" id="busqueda" method="post" class="formulario">
+                <input
+                  class="u-full-width"
+                  type="text"
+                  placeholder="¿a que país quieres enviar dinero?"
+                  id="buscador"
+                />
+                <input
+                  type="submit"
+                  id="submit-buscador"
+                  class="submit-buscador"
+                />
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="barra">
+      <div class="container">
+        <div class="row">
+          <div class="four columns icono icono1">
+            <p>
+              Envia a donde quieras <br />
+              y cuando quieras
+            </p>
+          </div>
+          <div class="four columns icono icono2">
+            <p>
+              5 años en el mercado de remesas <br />
+              y cambio de divisas
+            </p>
+          </div>
+          <div class="four columns icono icono3">
+            <p>
+              Recomiendanos con tus amigos <br />
+              y gana descuentos en tus proximos envios
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="lista-cursos" class="container">
+      <h1 id="encabezado" class="encabezado">
+        Paises a los que puedes enviar dinero
+      </h1>
+      <div class="row">
+        <div class="four columns">
+          <div class="card">
+            <img src="../img/venezuela.png" class="imagen-curso u-full-width" />
+            <div class="info-card">
+              <h4>Venezuela</h4>
+              <img src="../img/estrellas.png" />
+              <p class="precio">$120 <span class="u-pull-right">$100</span></p>
+              <a
+                href="#"
+                class="u-full-width button-primary button input agregar-carrito"
+                data-id="1"
+                >enviar dolares</a
+              >
+            </div>
+          </div>
+          <!--.card-->
+        </div>
+        <div class="four columns">
+          <div class="card">
+            <img
+              src="../img/bandera-de-brasil.png"
+              class="imagen-curso u-full-width"
+            />
+            <div class="info-card">
+              <h4>Brasil</h4>
+
+              <img src="../img/estrellas.png" />
+              <p class="precio">$120 <span class="u-pull-right">$100</span></p>
+              <a
+                href="#"
+                class="u-full-width button-primary button input agregar-carrito"
+                data-id="2"
+                >enviar dolares</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="four columns">
+          <div class="card">
+            <img src="../img/chile.png" class="imagen-curso u-full-width" />
+            <div class="info-card">
+              <h4>Chile</h4>
+
+              <img src="../img/estrellas.png" />
+              <p class="precio">$120 <span class="u-pull-right">$100</span></p>
+              <a
+                href="#"
+                class="u-full-width button-primary button input agregar-carrito"
+                data-id="3"
+                >enviar dolares</a
+              >
+            </div>
+          </div>
+          <!--.card-->
+        </div>
+      </div>
+      <!--.row-->
+      <div class="row">
+        <div class="four columns">
+          <div class="card">
+            <img src="../img/colombia.png" class="imagen-curso u-full-width" />
+            <div class="info-card">
+              <h4>Colombia</h4>
+
+              <img src="../img/estrellas.png" />
+              <p class="precio">$120 <span class="u-pull-right">$100</span></p>
+              <a
+                href="#"
+                class="u-full-width button-primary button input agregar-carrito"
+                data-id="4"
+                >enviar dolares</a
+              >
+            </div>
+          </div>
+          <!--.card-->
+        </div>
+        <div class="four columns">
+          <div class="card">
+            <img src="../img/panama.png" class="imagen-curso u-full-width" />
+            <div class="info-card">
+              <h4>Panama</h4>
+
+              <img src="../img/estrellas.png" />
+              <p class="precio">$120 <span class="u-pull-right">$100</span></p>
+              <a
+                href="#"
+                class="u-full-width button-primary button input agregar-carrito"
+                data-id="5"
+                >enviar dolares</a
+              >
+            </div>
+          </div>
+          <!--.card-->
+        </div>
+        <div class="four columns">
+          <div class="card">
+            <img src="../img/argentina.png" class="imagen-curso u-full-width" />
+            <div class="info-card">
+              <h4>Argentina</h4>
+
+              <img src="../img/estrellas.png" />
+              <p class="precio">$100 <span class="u-pull-right">$120</span></p>
+              <a
+                href="#"
+                class="u-full-width button-primary button input agregar-carrito"
+                data-id="6"
+                >enviar dolares</a
+              >
+            </div>
+          </div>
+          <!--.card-->
+        </div>
+      </div>
+    </div>
+
+    <footer id="footer" class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="four columns">
+            <nav id="principal" class="menu">
+              <a class="enlace" href="#">envia a cualquier parte del mundo</a>
+              <a class="enlace" href="#">remesas</a>
+              <a class="enlace" href="#">Soporte</a>
+              <a class="enlace" href="#">Temas</a>
+            </nav>
+          </div>
+          <div class="four columns">
+            <nav id="secundaria" class="menu">
+              <a class="enlace" href="#">¿Quienes Somos?</a>
+              <a class="enlace" href="#">Empleo</a>
+              <a class="enlace" href="#">Blog</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </footer>
+
     <script src="../javascript/paises.js"></script>
   </body>
 </html>
