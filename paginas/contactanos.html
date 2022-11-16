@@ -30,7 +30,7 @@
       </nav>
     </div>
     <!--Seccion de contacto-->
-    <section>
+    <section id="form">
       <div class="contactito">
         <h2>Contactanos</h2>
         <div class="contact-wrapper animated bounceInUp">
@@ -57,7 +57,7 @@
                 <textarea name="message" rows="3"></textarea>
               </p>
               <p class="block">
-                <button>Enviar</button>
+                <input type="submit" id="button" value="Enviar Mensaje" />
               </p>
             </form>
           </div>
@@ -78,5 +78,38 @@
         </div>
       </div>
     </section>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+    ></script>
+
+    <script type="text/javascript">
+      emailjs.init("XPO7lMio3I-ipHxq0");
+    </script>
   </body>
+  <script>
+    const btn = document.getElementById("button");
+
+    document
+      .getElementById("form")
+      .addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        btn.value = "Enviando...";
+
+        const serviceID = "default_service";
+        const templateID = "template_m1g2lfn";
+
+        emailjs.sendForm(serviceID, templateID, this).then(
+          () => {
+            btn.value = "Enviar Mensaje";
+            alert("Mensaje Enviado!");
+          },
+          (err) => {
+            btn.value = "Enviar Mensaje";
+            alert(JSON.stringify(err));
+          }
+        );
+      });
+  </script>
 </html>
