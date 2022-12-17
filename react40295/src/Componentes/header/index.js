@@ -1,12 +1,12 @@
 import React from "react";
-import Nike from "../../images/Nike.jpg";
+import argentina from "../../images/argentina.png";
 
 export const Header = () => {
   return (
     <header>
       <a href="#">
         <div className="logo">
-          <img src={Nike} alt="" />
+          <img src={argentina} alt="logo" width="150" />
         </div>
       </a>
       <ul>
@@ -19,7 +19,7 @@ export const Header = () => {
       </ul>
       <div className="cart">
         <box-icon name="cart"></box-icon>
-        <span className="item_total"></span>
+        <span className="item_total">0</span>
       </div>
     </header>
   );
