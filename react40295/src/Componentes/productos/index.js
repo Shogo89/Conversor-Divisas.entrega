@@ -1,131 +1,27 @@
-import React from "react";
-import IMG from "../../images/venezuela.png";
+import React, { useContext } from "react";
+import { DataContext } from "../../context/Dataprovider";
+import { ProductoItem } from "./ProductoItem";
 
 export const ProductosLista = () => {
+  const value = useContext(DataContext);
+  const [productos] = value.productos;
+  console.log(productos);
+
   return (
     <>
       <h1 className="title">Productos</h1>
       <div className="productos">
-        <div className="producto">
-          <a href="#">
-            <div className="producto__img">
-              <img src={IMG} alt="" />
-            </div>
-          </a>
-          <div className="producto__footer">
-            <h1>Enviar Remesa</h1>
-            <p> Categoria</p>
-            <p className="price">100$</p>
-          </div>
-          <div className="buttom">
-            <button className="btn">Añadir al carrito</button>
-            <div>
-              <a href="#" className="bnt">
-                Vista
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="producto">
-          <a href="#">
-            <div className="producto__img">
-              <img src={IMG} alt="" />
-            </div>
-          </a>
-          <div className="producto__footer">
-            <h1>Enviar Remesa</h1>
-            <p> Categoria</p>
-            <p className="price">100$</p>
-          </div>
-          <div className="buttom">
-            <button className="btn">Añadir al carrito</button>
-            <div>
-              <a href="#" className="bnt">
-                Vista
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="producto">
-          <a href="#">
-            <div className="producto__img">
-              <img src={IMG} alt="" />
-            </div>
-          </a>
-          <div className="producto__footer">
-            <h1>Enviar Remesa</h1>
-            <p> Categoria</p>
-            <p className="price">100$</p>
-          </div>
-          <div className="buttom">
-            <button className="btn">Añadir al carrito</button>
-            <div>
-              <a href="#" className="bnt">
-                Vista
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="producto">
-          <a href="#">
-            <div className="producto__img">
-              <img src={IMG} alt="" />
-            </div>
-          </a>
-          <div className="producto__footer">
-            <h1>Enviar Remesa</h1>
-            <p> Categoria</p>
-            <p className="price">100$</p>
-          </div>
-          <div className="buttom">
-            <button className="btn">Añadir al carrito</button>
-            <div>
-              <a href="#" className="bnt">
-                Vista
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="producto">
-          <a href="#">
-            <div className="producto__img">
-              <img src={IMG} alt="" />
-            </div>
-          </a>
-          <div className="producto__footer">
-            <h1>Enviar Remesa</h1>
-            <p> Categoria</p>
-            <p className="price">100$</p>
-          </div>
-          <div className="buttom">
-            <button className="btn">Añadir al carrito</button>
-            <div>
-              <a href="#" className="bnt">
-                Vista
-              </a>
-            </div>
-          </div>
-        </div>
-        <div className="producto">
-          <a href="#">
-            <div className="producto__img">
-              <img src={IMG} alt="" />
-            </div>
-          </a>
-          <div className="producto__footer">
-            <h1>Enviar Remesa</h1>
-            <p> Categoria</p>
-            <p className="price">100$</p>
-          </div>
-          <div className="buttom">
-            <button className="btn">Añadir al carrito</button>
-            <div>
-              <a href="#" className="bnt">
-                Vista
-              </a>
-            </div>
-          </div>
-        </div>
+        {productos.map((producto) => (
+          <ProductoItem
+            key={producto.id}
+            id={producto.id}
+            title={producto.title}
+            price={producto.price}
+            image={producto.image}
+            category={producto.category}
+            cantidad={producto.cantidad}
+          />
+        ))}
       </div>
       ;
     </>

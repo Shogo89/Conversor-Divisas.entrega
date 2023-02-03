@@ -1,9 +1,15 @@
 import React from "react";
+import { Switch, Route } from "react-router-dom";
+import { Inicio } from "./inicio";
+import { ProductosLista } from "./productos/index";
 
 export const Paginas = () => {
   return (
-    <div>
-      <h1></h1>
-    </div>
+    <section>
+      <Switch>
+        <Route path="/" exact component={Inicio} />
+        <Route path="/productos" exact component={ProductosLista} />
+      </Switch>
+    </section>
   );
 };
